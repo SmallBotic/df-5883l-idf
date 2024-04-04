@@ -18,8 +18,6 @@ void app_main(void) {
   float declinationAngle = (0 + (39.0 / 60.0)) / (180 / PI);
   setDeclinationAngle(&qmc, declinationAngle);
 
-  // xTaskCreatePinnedToCore(qmc5883_run, "qmc_task", 4096, /*&qmc_params*/
-  //                         &qmc, 1, NULL, 1);
   while (true) {
     readRaw(&qmc);
 
