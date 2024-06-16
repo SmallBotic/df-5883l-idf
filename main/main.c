@@ -31,7 +31,7 @@ void app_main(void) {
 
     getHeadingDegrees(&qmc);
 
-    float headingDegrees = qmc.v.HeadingDegress;
+    float headingDegrees = qmc.v.HeadingDegrees;
 
 
     ESP_LOGW("MAIN", "[MAG]: %f %f %f [CAL]: %f %f %f [DIR]: %f [AZM]:", x, y, z, cx, cy, cz, headingDegrees);

@@ -1,4 +1,4 @@
-/*!
+/** */
  * @file DFRobot_QMC5883.cpp
  * @brief Compatible with QMC5883 HMC5883 and QMC5883
  * @copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
@@ -102,7 +102,7 @@ bool qmcInit(struct df_qmc5883 *qmc, uint8_t I2C_addr) {
   // set range
   setRange(qmc, QMC5883_RANGE_8GA);
   // set measurement mode
-  setMeasurementMode(qmc, QMC5883_CONTINOUS);
+  setMeasurementMode(qmc, QMC5883_CONTINUOUS);
   // set fatarate
   setDataRate(QMC5883_DATARATE_50HZ);
   qmc->mgPerDigit = 4.35;
@@ -151,7 +151,7 @@ void getHeadingDegrees(struct df_qmc5883 *qmc)
     heading += 2*PI;
   if(heading > 2*PI)
     heading -= 2*PI;
-  qmc->v.HeadingDegress = heading * 180/PI;
+  qmc->v.HeadingDegrees = heading * 180/PI;
 }
 
 void readRaw(struct df_qmc5883 *qmc) {
