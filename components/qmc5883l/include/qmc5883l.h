@@ -72,7 +72,7 @@ typedef enum {
 
 typedef enum {
   QMC5883_SINGLE = 0b00,
-  QMC5883_CONTINOUS = 0b01,
+  QMC5883_CONTINUOUS = 0b01,
 } eMode_t;
 
 #ifndef VECTOR_STRUCT_H
@@ -84,7 +84,7 @@ typedef struct {
   float AngleXY;
   float AngleXZ;
   float AngleYZ;
-  float HeadingDegress;
+  float HeadingDegrees;
 } sVector_t;
 #endif
 
@@ -151,11 +151,11 @@ eRange_t getRange(void);
  * @param mode
  * @n     HMC5883L_IDLE
  * @n     HMC5883_SINGLE
- * @n     HMC5883L_CONTINOUS
+ * @n     HMC5883L_CONTINUOUS
  * @n     QMC5883_SINGLE
- * @n     QMC5883_CONTINOUS
+ * @n     QMC5883_CONTINUOUS
  * @n     VCM5883L_SINGLE
- * @n     VCM5883L_CONTINOUS
+ * @n     VCM5883L_CONTINUOUS
  */
 void setMeasurementMode(struct df_qmc5883 *qmc, eMode_t mode);
 
