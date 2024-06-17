@@ -1,4 +1,4 @@
-/** */
+/**
  * @file DFRobot_QMC5883.cpp
  * @brief Compatible with QMC5883 HMC5883 and QMC5883
  * @copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
@@ -9,6 +9,7 @@
  * @url https://github.com/DFRobot/DFRobot_QMC5883
  */
 #include "qmc5883l.h"
+
 #include <math.h>
 
 // equivalent to _writeReg()
@@ -43,6 +44,7 @@ void qmc5883l_master_read_slave_register(uint8_t reg_offset, uint8_t *data_rd,
     return;
   }
   // Read that address register
+  i2c_cmd_link_delete(cmd);
   cmd = i2c_cmd_link_create();
   i2c_master_start(cmd);
   i2c_master_write_byte(cmd, (MAGNETOMETER_I2C_ADDRESS << 1) | I2C_MASTER_READ,
@@ -139,19 +141,16 @@ void setSamples(eSamples_t samples) {
   qmc5883l_master_write_slave_register(QMC5883_REG_CONFIG_1, value, 1);
 }
 
-void setDeclinationAngle(struct df_qmc5883 *qmc,float declinationAngle){
+void setDeclinationAngle(struct df_qmc5883 *qmc, float declinationAngle) {
   qmc->ICdeclinationAngle = declinationAngle;
 }
 
-void getHeadingDegrees(struct df_qmc5883 *qmc)
-{
-  float heading = atan2(qmc->v.YAxis ,qmc->v.XAxis);
+void getHeadingDegrees(struct df_qmc5883 *qmc) {
+  float heading = atan2(qmc->v.YAxis, qmc->v.XAxis);
   heading += qmc->ICdeclinationAngle;
-  if(heading < 0)
-    heading += 2*PI;
-  if(heading > 2*PI)
-    heading -= 2*PI;
-  qmc->v.HeadingDegrees = heading * 180/PI;
+  if (heading < 0) heading += 2 * PI;
+  if (heading > 2 * PI) heading -= 2 * PI;
+  qmc->v.HeadingDegrees = heading * 180 / PI;
 }
 
 void readRaw(struct df_qmc5883 *qmc) {

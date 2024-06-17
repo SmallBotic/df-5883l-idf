@@ -34,7 +34,7 @@ void app_main(void) {
     float headingDegrees = qmc.v.HeadingDegrees;
 
 
-    ESP_LOGW("MAIN", "[MAG]: %f %f %f [CAL]: %f %f %f [DIR]: %f [AZM]:", x, y, z, cx, cy, cz, headingDegrees);
-    vTaskDelay(100 / portTICK_PERIOD_MS);
+    ESP_LOGW("MAIN", "[MAG]: %f %f %f [CAL]: %f %f %f [DIR]: %f", x, y, z, cx, cy, cz, headingDegrees);
+    vTaskDelay(10 / portTICK_PERIOD_MS);
   }
 }
